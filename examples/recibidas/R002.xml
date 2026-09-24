@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DEMOSTRACIÓN: datos ficticios, sin sello ni certificado; sin validez fiscal. -->
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" Version="4.0" Serie="DEMO" Folio="R002" Fecha="2026-01-17T12:00:00" SubTotal="200.00" Moneda="MXN" Total="216.00" TipoDeComprobante="I" MetodoPago="PUE" FormaPago="03" LugarExpedicion="00000">
+  <cfdi:Emisor Rfc="XEXX010101000" Nombre="Proveedor Frontera Demo" RegimenFiscal="601"/>
+  <cfdi:Receptor Rfc="XAXX010101000" Nombre="Empresa Demostración" DomicilioFiscalReceptor="00000" RegimenFiscalReceptor="616" UsoCFDI="S01"/>
+  <cfdi:Conceptos><cfdi:Concepto ClaveProdServ="01010101" Cantidad="1" ClaveUnidad="ACT" Descripcion="Servicio ficticio de demostración" ValorUnitario="200.00" Importe="200.00" ObjetoImp="02">
+    <cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="200.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.080000" Importe="16.00"/></cfdi:Traslados></cfdi:Impuestos>
+  </cfdi:Concepto></cfdi:Conceptos>
+  <cfdi:Impuestos TotalImpuestosTrasladados="16.00"><cfdi:Traslados><cfdi:Traslado Base="200.00" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.080000" Importe="16.00"/></cfdi:Traslados></cfdi:Impuestos>
+</cfdi:Comprobante>

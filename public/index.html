@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lya · Demo de portafolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Lya · Demo de portafolio</h1>
+      <p>Procesa XML sintéticos y genera cédulas de demostración. Usa únicamente datos ficticios.</p>
+    </div>
+    <button id="exportBtn" class="btn btn-success" disabled>Exportar Excel</button>
+  </header>
+
+  <main>
+    <section class="panel controls">
+      <div class="field mode-field">
+        <label>Tipo de configuración</label>
+        <div class="mode-tabs" role="tablist">
+          <button class="mode-tab active" type="button" data-mode="clientes">Perfiles demo</button>
+          <button class="mode-tab" type="button" data-mode="personalizada">Cédula personalizada</button>
+        </div>
+        <input id="modoCedula" type="hidden" value="clientes">
+      </div>
+      <div class="field client-field">
+        <label for="cliente">Perfiles demo</label>
+        <select id="cliente">
+          <option value="perfil_demo_01">Perfil demo 01</option>
+          <option value="perfil_demo_02">Perfil demo 02</option>
+          <option value="perfil_demo_03">Perfil demo 03</option>
+          <option value="perfil_demo_04">Perfil demo 04</option>
+          <option value="perfil_demo_05">Perfil demo 05</option>
+          <option value="perfil_demo_06">Perfil demo 06</option>
+          <option value="perfil_demo_07">Perfil demo 07</option>
+          <option value="perfil_demo_08" selected>Perfil demo 08</option>
+          <option value="perfil_demo_09">Perfil demo 09</option>
+          <option value="perfil_demo_10">Perfil demo 10</option>
+          <option value="perfil_demo_11">Perfil demo 11</option>
+          <option value="perfil_demo_12">Perfil demo 12</option>
+          <option value="perfil_demo_13">Perfil demo 13</option>
+          <option value="perfil_demo_14">Perfil demo 14</option>
+          <option value="perfil_demo_15">Perfil demo 15</option>
+          <option value="perfil_demo_16">Perfil demo 16</option>
+          <option value="perfil_demo_17">Perfil demo 17</option>
+          <option value="perfil_demo_18">Perfil demo 18</option>
+        </select>
+      </div>
+      <div class="field hotel-field hidden">
+        <label for="ivaHotel">IVA de ingresos</label>
+        <select id="ivaHotel">
+          <option value="8">8%</option>
+          <option value="16">16%</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="modo">Periodo</label>
+        <select id="modo">
+          <option value="auto" selected>Automático</option>
+          <option value="mensual">Mensual</option>
+          <option value="trimestral">Trimestral</option>
+          <option value="anual">Anual</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="anio">Año</label>
+        <input id="anio" type="number" min="2000" max="2100">
+      </div>
+      <div class="field period-field" data-for="mensual">
+        <label for="mes">Mes</label>
+        <select id="mes">
+          <option value="1">Enero</option>
+          <option value="2">Febrero</option>
+          <option value="3">Marzo</option>
+          <option value="4">Abril</option>
+          <option value="5">Mayo</option>
+          <option value="6">Junio</option>
+          <option value="7">Julio</option>
+          <option value="8">Agosto</option>
+          <option value="9">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+      </div>
+      <div class="field period-field hidden" data-for="trimestral">
+        <label for="trimestre">Trimestre</label>
+        <select id="trimestre">
+          <option value="1">1: Ene - Mar</option>
+          <option value="2">2: Abr - Jun</option>
+          <option value="3">3: Jul - Sep</option>
+          <option value="4">4: Oct - Dic</option>
+        </select>
+      </div>
+    </section>
+
+    <section id="customColumns" class="panel custom-columns hidden">
+      <div><h2>Columnas de emitidas</h2><div class="check-grid">
+        <label><input type="checkbox" name="colEmitidas" value="ingresos" checked> Ingresos</label><label><input type="checkbox" name="colEmitidas" value="exento" checked> Exento</label><label><input type="checkbox" name="colEmitidas" value="iva16" checked> IVA 16%</label><label><input type="checkbox" name="colEmitidas" value="subtotal"> Subtotal</label><label><input type="checkbox" name="colEmitidas" value="retIsr"> Ret. ISR</label><label><input type="checkbox" name="colEmitidas" value="retIva"> Ret. IVA</label><label><input type="checkbox" name="colEmitidas" value="total" checked> Total</label>
+      </div></div>
+      <div><h2>Columnas de recibidas</h2><div class="check-grid">
+        <label><input type="checkbox" name="colRecibidas" value="gravado8" checked> Gravado 8%</label><label><input type="checkbox" name="colRecibidas" value="gravado16" checked> Gravado 16%</label><label><input type="checkbox" name="colRecibidas" value="tasa0"> Tasa 0%</label><label><input type="checkbox" name="colRecibidas" value="exento" checked> Exento</label><label><input type="checkbox" name="colRecibidas" value="subtotal" checked> Subtotal</label><label><input type="checkbox" name="colRecibidas" value="iva8" checked> IVA 8%</label><label><input type="checkbox" name="colRecibidas" value="iva16" checked> IVA 16%</label><label><input type="checkbox" name="colRecibidas" value="ieps"> IEPS</label><label><input type="checkbox" name="colRecibidas" value="retIsr"> Ret. ISR</label><label><input type="checkbox" name="colRecibidas" value="retIva"> Ret. IVA</label><label><input type="checkbox" name="colRecibidas" value="total" checked> Pago neto</label>
+      </div></div>
+    </section>
+
+    <section class="upload-grid">
+      <div class="panel upload">
+        <div class="upload-head">
+          <h2>Emitidas</h2>
+          <span id="emitidasCount">0 archivos</span>
+        </div>
+        <input id="emitidas" type="file" accept=".xml,.zip" multiple>
+      </div>
+      <div class="panel upload">
+        <div class="upload-head">
+          <h2>Recibidas</h2>
+          <span id="recibidasCount">0 archivos</span>
+        </div>
+        <input id="recibidas" type="file" accept=".xml,.zip" multiple>
+      </div>
+    </section>
+
+    <section class="panel quick-upload">
+      <div class="field">
+        <label for="tipoCarga">Tipo de archivo</label>
+        <select id="tipoCarga">
+          <option value="emitidas">Emitida</option>
+          <option value="recibidas">Recibida</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="quickFiles">XML o ZIP</label>
+        <input id="quickFiles" type="file" accept=".xml,.zip" multiple>
+      </div>
+      <button id="addQuickFiles" class="btn btn-success" type="button">Agregar al tipo seleccionado</button>
+    </section>
+
+    <section class="actions">
+      <button id="processBtn" class="btn btn-primary">Procesar archivos</button>
+      <button id="clearBtn" class="btn btn-soft">Limpiar</button>
+      <span id="status">Listo para cargar XML o ZIP.</span>
+    </section>
+
+    <section id="summary" class="summary hidden"></section>
+    <section id="tables" class="tables"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
